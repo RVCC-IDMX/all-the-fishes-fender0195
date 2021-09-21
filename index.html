@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All The Fishes</title>
+    <script src="https://pixijs.download/release/pixi.js"></script>
+</head>
+<body>
+
+<script>
+
+    //The App
+    var app = new PIXI.Application({
+        width:1020,
+        height:760,
+        transparent: true,
+    });
+    
+    //Background
+    const bg = PIXI.Sprite.from("img/underwater_background.jpg");
+        bg.x = -500;
+        bg.y = -500;
+    app.stage.addChild(bg);
+    
+    //Add view to the document
+    document.body.appendChild(app.view);
+
+    //My first Sprite
+    let fish1 = PIXI.Sprite.from("img/fish_1.png");
+        fish1.x = -200;
+        fish1.y = 0;
+        fish1.angle = 0;
+        fish1.scale.set(.4);
+        fish1.anchor.set(.5);
+
+    app.stage.addChild(fish1);
+
+    //My second Sprite
+    let fish2 = PIXI.Sprite.from("img/fish_2.png");
+        fish2.x = 220;
+        fish2.y = 0;
+        fish2.angle = 0;
+        fish2.scale.set(.4);
+        fish2.anchor.set(.5);
+
+    app.stage.addChild(fish2);
+
+    //My third Sprite
+    let fish3 = PIXI.Sprite.from("img/fish_3.png");
+        fish3.x = 10;
+        fish3.y = -200;
+        fish3.angle = 0;
+        fish3.scale.set(.4);
+        fish3.anchor.set(.5);
+
+    app.stage.addChild(fish3);
+
+    //My fourth Sprite
+    let fish4 = PIXI.Sprite.from("img/fish_4.png");
+        fish4.x = 150;
+        fish4.y = -400;
+        fish4.angle = 0;
+        fish4.scale.set(.4);
+        fish4.anchor.set(.5);
+
+    app.stage.addChild(fish4);
+
+    //My fifth Sprite
+    let fish5 = PIXI.Sprite.from("img/fish_5.png");
+        fish5.x = -350;
+        fish5.y = -300;
+        fish5.angle = 0;
+        fish5.scale.set(.4);
+        fish5.anchor.set(.5);
+
+    app.stage.addChild(fish5);
+
+    //My sixth Sprite
+    let fish6 = PIXI.Sprite.from("img/fish_6.png");
+        fish6.x = 350;
+        fish6.y = -150;
+        fish6.angle = 0;
+        fish6.scale.set(.4);
+        fish6.anchor.set(.5);
+
+    app.stage.addChild(fish6);
+
+
+    //My Container
+    var my_container = new PIXI.Container();
+    my_container.addChild(bg);
+    my_container.addChild(fish1);
+    my_container.addChild(fish2);
+    my_container.addChild(fish3);
+    my_container.addChild(fish4);
+    my_container.addChild(fish5);
+    my_container.addChild(fish6);
+    my_container.x = 510;
+    my_container.y = 500;
+
+    app.stage.addChild(my_container);
+
+    //Animation Loop!
+    function animationLoop() {
+        
+        //fish1.y -= 1;
+        //fish2.y += 1;
+        //fish1.angle += 1;
+
+        let time = Date.now();
+
+        let wobble1 = Math.sin(time/1000)*20;
+        let wobble2 = Math.sin(time/700)*20;
+
+        fish1.y = wobble1;
+        fish2.y = wobble2;
+
+        setTimeout(animationLoop, 1000/30);
+    }
+    animationLoop();
+
+</script>    
+
+</body>
+</html>
