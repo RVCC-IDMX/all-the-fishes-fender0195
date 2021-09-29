@@ -20,8 +20,8 @@
     
     //Background
     const bg = PIXI.Sprite.from("img/underwater_background.jpg");
-        bg.x = -500;
-        bg.y = -500;
+        bg.x = 0;//-500;
+        bg.y = 0;//-500;
     app.stage.addChild(bg);
     
     //Add view to the document
@@ -50,7 +50,7 @@
     //My third Sprite
     let fish3 = PIXI.Sprite.from("img/fish_3.png");
         fish3.x = 10;
-        fish3.y = -200;
+        fish3.y = 200;
         fish3.angle = 0;
         fish3.scale.set(.4);
         fish3.anchor.set(.5);
@@ -90,10 +90,10 @@
 
     //My Container
     var my_container = new PIXI.Container();
-    my_container.addChild(bg);
+    //my_container.addChild(bg);
     my_container.addChild(fish1);
     my_container.addChild(fish2);
-    my_container.addChild(fish3);
+    //my_container.addChild(fish3);
     my_container.addChild(fish4);
     my_container.addChild(fish5);
     my_container.addChild(fish6);
@@ -114,11 +114,19 @@
         let wobble1 = Math.sin(time/1000)*20;
         let wobble2 = Math.sin(time/700)*20;
 
+        let swimBy = (time/10)%1500;
+        fish3.x = 1250 - swimBy;
+
         fish1.y = wobble1;
         fish2.y = wobble2;
 
         setTimeout(animationLoop, 1000/30);
     }
+
+
+
+        
+
     animationLoop();
 
 </script>    
