@@ -60,7 +60,7 @@
     //My fourth Sprite
     let fish4 = PIXI.Sprite.from("img/fish_4.png");
         fish4.x = 150;
-        fish4.y = -400;
+        fish4.y = 350;
         fish4.angle = 0;
         fish4.scale.set(.4);
         fish4.anchor.set(.5);
@@ -69,34 +69,19 @@
 
     //My fifth Sprite
     let fish5 = PIXI.Sprite.from("img/fish_5.png");
-        fish5.x = -350;
-        fish5.y = -300;
+        fish5.x = 150;
+        fish5.y = 100;
         fish5.angle = 0;
         fish5.scale.set(.4);
         fish5.anchor.set(.5);
 
     app.stage.addChild(fish5);
 
-    //My sixth Sprite
-    let fish6 = PIXI.Sprite.from("img/fish_6.png");
-        fish6.x = 350;
-        fish6.y = -150;
-        fish6.angle = 0;
-        fish6.scale.set(.4);
-        fish6.anchor.set(.5);
-
-    app.stage.addChild(fish6);
-
 
     //My Container
     var my_container = new PIXI.Container();
-    //my_container.addChild(bg);
     my_container.addChild(fish1);
     my_container.addChild(fish2);
-    //my_container.addChild(fish3);
-    my_container.addChild(fish4);
-    my_container.addChild(fish5);
-    my_container.addChild(fish6);
     my_container.x = 510;
     my_container.y = 500;
 
@@ -114,18 +99,20 @@
         let wobble1 = Math.sin(time/1000)*20;
         let wobble2 = Math.sin(time/700)*20;
 
-        let swimBy = (time/10)%1500;
-        fish3.x = 1250 - swimBy;
-
         fish1.y = wobble1;
         fish2.y = wobble2;
 
+        let swimBy1 = (time/10)%1500;
+        fish3.x = 1250 - swimBy1;
+
+        let swimBy2 = (time/10)%1500;
+        fish4.x = swimBy2;
+
+        let tintedFish = Math.round(time/20) * 0xFF00FF;
+        fish5.tint = tintedFish;
+
         setTimeout(animationLoop, 1000/30);
     }
-
-
-
-        
 
     animationLoop();
 
