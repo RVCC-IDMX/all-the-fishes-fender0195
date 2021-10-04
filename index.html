@@ -77,6 +77,15 @@
 
     app.stage.addChild(fish5);
 
+    //My sixth Sprite
+    /*let fish6 = PIXI.Sprite.from("img/fish_6.png");
+        fish6.x = 700;
+        fish6.y = 70;
+        fish6.angle = 0;
+        fish6.scale.set(.4);
+        fish6.anchor.set(.5);
+        
+    app.stage.addChild(fish6);*/
 
     //My Container
     var my_container = new PIXI.Container();
@@ -89,10 +98,6 @@
 
     //Animation Loop!
     function animationLoop() {
-        
-        //fish1.y -= 1;
-        //fish2.y += 1;
-        //fish1.angle += 1;
 
         let time = Date.now();
 
@@ -102,12 +107,15 @@
         fish1.y = wobble1;
         fish2.y = wobble2;
 
+        //Animation for Fish3
         let swimBy1 = (time/10)%1500;
         fish3.x = 1250 - swimBy1;
 
+        //Animation for Fish4
         let swimBy2 = (time/10)%1500;
         fish4.x = swimBy2;
 
+        //Color Change for Fish5
         let tintedFish = Math.round(time/20) * 0xFF00FF;
         fish5.tint = tintedFish;
 
@@ -116,7 +124,48 @@
 
     animationLoop();
 
-</script>    
+    //Fish 6
+    function makefish6() {
+
+    let fish6 = new PIXI.Container();
+        fish6.interactive = true;
+
+    let bodyfish6 = PIXI.Sprite.from("img/fish_6.png");
+        bodyfish6.anchor.set(.5,.5);
+        bodyfish6.x = 700;
+        bodyfish6.y = 70;
+        bodyfish6.angle = 0;
+        bodyfish6.scale.set(.4);
+        bodyfish6.anchor.set(.5);
+        fish6.addChild(bodyfish6);
+        
+        fish6.body = bodyfish6;
+
+    //Drag Animation
+    fish6.dragging = false;
+    fish6.on("pointerdown",function (e) {
+        fish6.dragging = true;
+    });
+    fish6.on("pointermove",function (e) {
+        if(fish6.dragging) {
+            console.log(e);
+            fish6.x = e.data.global.x - fish6.width/2;
+            fish6.y = e.data.global.y - fish6.height/2;
+        }
+    });
+    fish6.on("pointerup",function (e) {
+        fish6.dragging = false;
+    });
+
+    return fish6;
+
+    }
+
+    let fish6 = makefish6();
+
+    app.stage.addChild(fish6);
+
+</script> 
 
 </body>
 </html>
