@@ -141,30 +141,73 @@
         
         fish6.body = bodyfish6;
 
-    //Drag Animation
-    fish6.dragging = false;
-    fish6.on("pointerdown",function (e) {
-        fish6.dragging = true;
-    });
-    fish6.on("pointermove",function (e) {
-        if(fish6.dragging) {
-            console.log(e);
-            fish6.x = e.data.global.x - fish6.width/2;
-            fish6.y = e.data.global.y - fish6.height/2;
-        }
-    });
-    fish6.on("pointerup",function (e) {
+        //Drag Animation
         fish6.dragging = false;
-    });
+        fish6.on("pointerdown",function (e) {
+            fish6.dragging = true;
+        });
+        fish6.on("pointermove",function (e) {
+            if(fish6.dragging) {
+                console.log(e);
+                fish6.x = e.data.global.x;
+                fish6.y = e.data.global.y;
+            }
+        });
+        fish6.on("pointerup",function (e) {
+            fish6.dragging = false;
+        });
 
-    return fish6;
-
+        return fish6;
     }
 
     let fish6 = makefish6();
 
     app.stage.addChild(fish6);
 
+
+    //Make Button
+    function makeButton() {
+
+    let ourButton = new PIXI.Container();
+        ourButton.interactive = true;
+        ourButton.y = 630;
+
+    let buttonBody = new PIXI.Graphics();
+        buttonBody.beginFill(0x002F6C);
+        buttonBody.drawRect(0, 0, 100, 50);
+        ourButton.addChild(buttonBody);
+        ourButton.body = buttonBody;
+
+    let buttonText = new PIXI.Text('Button');
+        buttonText.anchor.set(.5,.5);
+        buttonText.x = 50;
+        buttonText.y = 25;
+        buttonText.style.fill = 0xFFFFFF;
+        ourButton.addChild(buttonText);
+        ourButton.text = buttonText;
+
+    //Event Listeners
+    //Click listener
+    ourButton.on("click",function (e) {
+        //alert("clicked!");
+        console.log(e);
+    });
+    //Hover listeners
+    ourButton.on("pointerover",function (e) {
+        ourButton.alpha = 0.7;
+    });
+    ourButton.on("pointerout",function (e) {
+        ourButton.alpha = 1.0;
+    });
+
+    return ourButton;
+
+    }
+
+    let ourButton = makeButton();
+
+    app.stage.addChild(ourButton);
+    
 </script> 
 
 </body>
