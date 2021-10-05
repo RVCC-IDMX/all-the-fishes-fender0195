@@ -159,7 +159,14 @@
         ourButton.addChild(buttonText);
         ourButton.text = buttonText;
         
-        //Event Listeners
+        //Click listener
+        ourButton.on("click",function (e) {
+            //alert("clicked!");
+            fish2.tint = 0x00ff00;
+            console.log(e);
+        });
+        
+        //Hover listeners
         ourButton.on("pointerover",function (e) {
             ourButton.alpha = 0.7;
         });
