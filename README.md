@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # All the Fishes Assignment
 
 For this assignment, I used to different codes to animate three new fishes in the aquarium.
@@ -20,4 +18,3 @@ Source for the second code:
 
 1. For the fish images: [link](https://pixabay.com/vectors/search/fish/)
 1. For the background: [link](https://pixabay.com/photos/sea-background-ocean-beach-nature-5165161/)
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685

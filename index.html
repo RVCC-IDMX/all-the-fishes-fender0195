@@ -8,7 +8,6 @@
     <script src="https://pixijs.download/release/pixi.js"></script>
 </head>
 <body>
-
 <script>
 
     //The App
@@ -20,13 +19,8 @@
     
     //Background
     const bg = PIXI.Sprite.from("img/underwater_background.jpg");
-<<<<<<< HEAD
-        bg.x = -500;
-        bg.y = -500;
-=======
         bg.x = 0;//-500;
         bg.y = 0;//-500;
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
     app.stage.addChild(bg);
     
     //Add view to the document
@@ -39,9 +33,8 @@
         fish1.angle = 0;
         fish1.scale.set(.4);
         fish1.anchor.set(.5);
-
     app.stage.addChild(fish1);
-
+    
     //My second Sprite
     let fish2 = PIXI.Sprite.from("img/fish_2.png");
         fish2.x = 220;
@@ -49,152 +42,82 @@
         fish2.angle = 0;
         fish2.scale.set(.4);
         fish2.anchor.set(.5);
-
     app.stage.addChild(fish2);
-
+   
     //My third Sprite
     let fish3 = PIXI.Sprite.from("img/fish_3.png");
         fish3.x = 10;
-<<<<<<< HEAD
-        fish3.y = -200;
-=======
         fish3.y = 200;
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
         fish3.angle = 0;
         fish3.scale.set(.4);
         fish3.anchor.set(.5);
-
     app.stage.addChild(fish3);
-
+    
     //My fourth Sprite
     let fish4 = PIXI.Sprite.from("img/fish_4.png");
         fish4.x = 150;
-<<<<<<< HEAD
-        fish4.y = -400;
-=======
         fish4.y = 350;
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
         fish4.angle = 0;
         fish4.scale.set(.4);
         fish4.anchor.set(.5);
-
     app.stage.addChild(fish4);
-
+    
     //My fifth Sprite
     let fish5 = PIXI.Sprite.from("img/fish_5.png");
-<<<<<<< HEAD
-        fish5.x = -350;
-        fish5.y = -300;
-=======
         fish5.x = 150;
         fish5.y = 100;
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
         fish5.angle = 0;
         fish5.scale.set(.4);
         fish5.anchor.set(.5);
-
     app.stage.addChild(fish5);
-
-    //My sixth Sprite
-<<<<<<< HEAD
-    let fish6 = PIXI.Sprite.from("img/fish_6.png");
-        fish6.x = 350;
-        fish6.y = -150;
-        fish6.angle = 0;
-        fish6.scale.set(.4);
-        fish6.anchor.set(.5);
-
-    app.stage.addChild(fish6);
-
-
-    //My Container
-    var my_container = new PIXI.Container();
-    my_container.addChild(bg);
-    my_container.addChild(fish1);
-    my_container.addChild(fish2);
-    my_container.addChild(fish3);
-    my_container.addChild(fish4);
-    my_container.addChild(fish5);
-    my_container.addChild(fish6);
-=======
-    /*let fish6 = PIXI.Sprite.from("img/fish_6.png");
-        fish6.x = 700;
-        fish6.y = 70;
-        fish6.angle = 0;
-        fish6.scale.set(.4);
-        fish6.anchor.set(.5);
-        
-    app.stage.addChild(fish6);*/
-
+    
     //My Container
     var my_container = new PIXI.Container();
     my_container.addChild(fish1);
     my_container.addChild(fish2);
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
     my_container.x = 510;
     my_container.y = 500;
-
     app.stage.addChild(my_container);
-
+    
     //Animation Loop!
     function animationLoop() {
-<<<<<<< HEAD
-        
-        //fish1.y -= 1;
-        //fish2.y += 1;
-        //fish1.angle += 1;
-=======
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
-
         let time = Date.now();
-
         let wobble1 = Math.sin(time/1000)*20;
         let wobble2 = Math.sin(time/700)*20;
-
         fish1.y = wobble1;
         fish2.y = wobble2;
-
-<<<<<<< HEAD
-        setTimeout(animationLoop, 1000/30);
-    }
-    animationLoop();
-
-</script>    
-=======
+        
         //Animation for Fish3
         let swimBy1 = (time/10)%1500;
         fish3.x = 1250 - swimBy1;
-
+        
         //Animation for Fish4
         let swimBy2 = (time/10)%1500;
         fish4.x = swimBy2;
-
+        
         //Color Change for Fish5
         let tintedFish = Math.round(time/20) * 0xFF00FF;
         fish5.tint = tintedFish;
-
         setTimeout(animationLoop, 1000/30);
     }
-
     animationLoop();
-
+    
     //Fish 6
     function makefish6() {
-
-    let fish6 = new PIXI.Container();
+    
+        let fish6 = new PIXI.Container();
         fish6.interactive = true;
-
-    let bodyfish6 = PIXI.Sprite.from("img/fish_6.png");
+    
+        let bodyfish6 = PIXI.Sprite.from("img/fish_6.png");
         bodyfish6.anchor.set(.5,.5);
         bodyfish6.x = 700;
         bodyfish6.y = 70;
         bodyfish6.scale.set(.4);
         bodyfish6.anchor.set(.5);
         fish6.addChild(bodyfish6);
-        
+
         fish6.body = bodyfish6;
-
-
+        
         //Drag Animation
         fish6.dragging = false;
         fish6.on("pointerdown",function (e) {
@@ -210,62 +133,50 @@
         fish6.on("pointerup",function (e) {
             fish6.dragging = false;
         });
-
         return fish6;
     }
-
     let fish6 = makefish6();
-
     app.stage.addChild(fish6);
-
-
+    
     //Make Button
     function makeButton() {
-
-    let ourButton = new PIXI.Container();
+    
+        let ourButton = new PIXI.Container();
         ourButton.interactive = true;
         ourButton.y = 630;
-
-    let buttonBody = new PIXI.Graphics();
+    
+        let buttonBody = new PIXI.Graphics();
         buttonBody.beginFill(0x002F6C);
         buttonBody.drawRect(0, 0, 100, 50);
         ourButton.addChild(buttonBody);
         ourButton.body = buttonBody;
-
-    let buttonText = new PIXI.Text('Button');
+    
+        let buttonText = new PIXI.Text('Color');
         buttonText.anchor.set(.5,.5);
         buttonText.x = 50;
         buttonText.y = 25;
         buttonText.style.fill = 0xFFFFFF;
         ourButton.addChild(buttonText);
         ourButton.text = buttonText;
-
-    //Event Listeners
-    //Click listener
-    ourButton.on("click",function (e) {
-        //alert("clicked!");
-        fish2.tint = 0x00ff00;
-        console.log(e);
-    });
-    //Hover listeners
-    ourButton.on("pointerover",function (e) {
-        ourButton.alpha = 0.7;
-    });
-    ourButton.on("pointerout",function (e) {
-        ourButton.alpha = 1.0;
-    });
-
-    return ourButton;
-
-    }
-
-    let ourButton = makeButton();
-
-    app.stage.addChild(ourButton);
+        
+        //Event Listeners
+        ourButton.on("pointerover",function (e) {
+            ourButton.alpha = 0.7;
+        });
+       
+        ourButton.on("pointerout",function (e) {
+            ourButton.alpha = 1.0;
+        });
+       
+        return ourButton;
     
+    }
+       
+    let ourButton = makeButton();
+        
+        app.stage.addChild(ourButton);
 
 </script> 
->>>>>>> bd40136438ef2de5312f6d0cf0f8caf7abdc4685
 
 </body>
 </html>
