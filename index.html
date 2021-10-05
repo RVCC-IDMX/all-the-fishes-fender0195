@@ -134,12 +134,12 @@
         bodyfish6.anchor.set(.5,.5);
         bodyfish6.x = 700;
         bodyfish6.y = 70;
-        bodyfish6.angle = 0;
         bodyfish6.scale.set(.4);
         bodyfish6.anchor.set(.5);
         fish6.addChild(bodyfish6);
         
         fish6.body = bodyfish6;
+
 
         //Drag Animation
         fish6.dragging = false;
@@ -190,6 +190,7 @@
     //Click listener
     ourButton.on("click",function (e) {
         //alert("clicked!");
+        fish2.tint = 0x00ff00;
         console.log(e);
     });
     //Hover listeners
@@ -208,6 +209,7 @@
 
     app.stage.addChild(ourButton);
     
+
 </script> 
 
 </body>
