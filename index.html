@@ -106,39 +106,38 @@
     function makefish6() {
     
         let fish6 = new PIXI.Container();
-        fish6.interactive = true;
     
         let bodyfish6 = PIXI.Sprite.from("img/fish_6.png");
-        bodyfish6.anchor.set(.5,.5);
         bodyfish6.x = 700;
         bodyfish6.y = 70;
         bodyfish6.scale.set(.4);
-        bodyfish6.anchor.set(.5);
+        bodyfish6.anchor.set(.5,.5);
         fish6.addChild(bodyfish6);
 
         fish6.body = bodyfish6;
         
-        //Drag Animation
-        fish6.dragging = false;
-        fish6.on("pointerdown",function (e) {
-            fish6.dragging = true;
+    //Drag Animation
+        bodyfish6.interactive = true;
+        bodyfish6.dragging = false;
+        bodyfish6.on("pointerdown",function (e) {
+            bodyfish6.dragging = true;
         });
-        fish6.on("pointermove",function (e) {
-            if(fish6.dragging) {
+        bodyfish6.on("pointermove",function (e) {
+            if(bodyfish6.dragging) {
                 console.log(e);
-                fish6.x = e.data.global.x;
-                fish6.y = e.data.global.y;
+                bodyfish6.x = e.data.global.x - fish6.getGlobalPosition().x;
+                bodyfish6.y = e.data.global.y - fish6.getGlobalPosition().y;
             }
         });
-        fish6.on("pointerup",function (e) {
-            fish6.dragging = false;
+        bodyfish6.on("pointerup",function (e) {
+            bodyfish6.dragging = false;
         });
         return fish6;
     }
     let fish6 = makefish6();
     app.stage.addChild(fish6);
     
-    //Make Button
+    //Color Button
     function makeButton() {
     
         let ourButton = new PIXI.Container();
@@ -162,7 +161,7 @@
         //Click listener
         ourButton.on("click",function (e) {
             //alert("clicked!");
-            fish2.tint = 0x00ff00;
+            fish2.tint = Math.floor(0xffffff * Math.random());
             console.log(e);
         });
         
@@ -225,15 +224,15 @@
             theSlide.x = newX;
 
             console.log(ourButton.value);
+
+            fish1.scale.set(ourButton.value);
         }
     });
     theSlide.on("pointerup",function (e) {
         theSlide.dragging = false;
-        fish1.scale.set(.4);
     });
     theSlide.on("pointerupoutside",function (e) {
         theSlide.dragging = false;
-        fish1.scale.set(.8);
 
     });
 
