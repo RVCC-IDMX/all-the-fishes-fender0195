@@ -180,6 +180,71 @@
     }
        
     let ourButton = makeButton();
+
+    //MAKE SLIDER
+    
+    function makeSlider() {
+
+    let ourButton = new PIXI.Container();
+    ourButton.interactive = true;
+
+    ourButton.value = 0;
+
+    //The track
+    let theTrack = new PIXI.Graphics();
+        theTrack.beginFill(0x002F6C);
+        theTrack.drawRect(0, -10, 100, 20);
+
+        ourButton.addChild(theTrack);
+
+    //The slide
+    let theSlide = new PIXI.Graphics();
+        theSlide.interactive = true;
+        theSlide.beginFill(0x77B5FE);
+        theSlide.drawRect(-12.5, -12.5, 25, 25);
+
+        ourButton.addChild(theSlide);
+
+    //Add event listeners
+    //Draggable event listeners
+    theSlide.dragging = false;
+    theSlide.on("pointerdown",function (e) {
+        theSlide.dragging = true;
+    });
+    theSlide.on("pointermove",function (e) {
+        if(theSlide.dragging) {
+
+            let newX = e.data.global.x - ourButton.getGlobalPosition().x;
+            let newY = e.data.global.y - ourButton.getGlobalPosition().y;
+
+            if (newX > theTrack.width) newX = theTrack.width;
+            if (newX < 0 ) newX = 0;
+
+            ourButton.value = newX/theTrack.width;
+
+            theSlide.x = newX;
+
+            console.log(ourButton.value);
+        }
+    });
+    theSlide.on("pointerup",function (e) {
+        theSlide.dragging = false;
+        fish1.scale.set(.4);
+    });
+    theSlide.on("pointerupoutside",function (e) {
+        theSlide.dragging = false;
+        fish1.scale.set(.8);
+
+    });
+
+    return ourButton;
+
+    }
+
+    let ourSlider = makeSlider();
+    ourSlider.y =650;
+    ourSlider.x = 900;
+    app.stage.addChild(ourSlider);
         
     app.stage.addChild(ourButton);
 
