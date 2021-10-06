@@ -100,6 +100,7 @@
         fish5.tint = tintedFish;
         setTimeout(animationLoop, 1000/30);
     }
+
     animationLoop();
     
     //Fish 6
@@ -129,12 +130,16 @@
                 bodyfish6.y = e.data.global.y - fish6.getGlobalPosition().y;
             }
         });
+        
         bodyfish6.on("pointerup",function (e) {
             bodyfish6.dragging = false;
         });
+        
         return fish6;
     }
+    
     let fish6 = makefish6();
+    
     app.stage.addChild(fish6);
     
     //Color Button
